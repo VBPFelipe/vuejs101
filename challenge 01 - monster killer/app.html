@@ -54,7 +54,7 @@
                     Desistir
                 </button>
             </template>
-            <button @click="start_game" class="btn new-game">
+            <button v-else @click="start_game" class="btn new-game">
                 Iniciar Jogo
             </button>
         </div>
