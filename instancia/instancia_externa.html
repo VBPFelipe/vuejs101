@@ -1,0 +1,51 @@
+<!-- NÃO É UMA BOA PRÁTICA -->
+
+<!-- Intereação entre duas instâncias pode depender muito do framework,
+        o que pode ocasionar um comportamento inesperado -->
+
+
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app1">
+    {{ titulo1 }}
+    <!-- {{ titulo2 }} -->
+    <button @click="alterar">Alterar</button>
+</div>
+
+<div id="app2">
+    <!-- {{ titulo1 }} -->
+    {{ titulo2 }}
+    <button @click="alterar">Alterar</button>
+</div>
+
+<script>
+    const vm1 = new Vue({
+        el:'#app1',
+        data: {
+            titulo1:'Teste1'
+        },
+        methods:{
+            alterar(){
+                vm2.titulo2 += '????'
+            }
+        }
+    })
+
+    const vm2 = new Vue({
+        el:'#app2',
+        data: {
+            titulo2:'Teste2'
+        },
+        methods:{
+            alterar(){
+                vm1.titulo1 += '!!!!'
+            }
+        }
+    })
+
+    // Intercede na primeira instância em tempo de execução
+    setTimeout( () => {
+        vm1.titulo1 = 'Alterado pelo timer!'
+    }, 2000)
+</script>

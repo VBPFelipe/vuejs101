@@ -1,0 +1,34 @@
+<!-- NÃO É UMA BOA PRÁTICA -->
+
+<!-- Intereação entre duas instâncias pode depender muito do framework,
+        o que pode ocasionar um comportamento inesperado -->
+
+
+        <meta charset="UTF-8">
+        <script src="https://unpkg.com/vue"></script>
+        
+        <div id="app">
+            {{ titulo1 }}
+
+            {{ nova_info }} <!-- abra a inspeção do template -->
+            <!-- nova_info existe na instância, mas não é reativa 
+                (não há getters and setters para o framework VueJS) -->
+            <button @click="alterar">Alterar</button>
+        </div>
+
+        <script>
+            const vm1 = new Vue({
+                el:'#app',
+                data: {
+                    titulo1:'Teste1'
+                },
+                methods:{
+                    alterar(){
+                        this.titulo1 += '!s'
+                    }
+                }
+            })
+
+            vm1.nova_info = 'Teste'
+            console.log(vm1.nova_info);
+        </script>
