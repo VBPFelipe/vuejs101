@@ -12,8 +12,10 @@
                 @nomeMudou="nome=$event.old+$event.novo" 
                 :reiniciarFn="reiniciarNome"/>
             <!-- <app-usuario-info :nome="nome"/> -->
-            <app-usuario-editar :idade="idade" 
-                @idadeMudou="idade = $event + 1"/>
+            <!-- <app-usuario-editar :idade="idade" 
+                @idadeMudou="idade = $event + 1"/> -->
+            <app-usuario-editar :idade="idade"/>
+
         </div>
     </div>
 </template>

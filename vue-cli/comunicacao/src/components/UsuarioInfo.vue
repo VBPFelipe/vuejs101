@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import barramento from '@/barramento'
+
 export default {
     //Estabelece o tipo da variável.
     //Facilitador para validação
@@ -44,6 +46,12 @@ export default {
         reiniciarFn(){
 
         }
+    },
+    created() {
+        // barramento.$on('idadeMudou', (idade) => )
+        barramento.quandoIdadeMudar(idade => {
+            this.idade = idade
+        })
     }
 }
 </script>

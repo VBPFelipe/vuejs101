@@ -9,13 +9,21 @@
 
 <script>
 
+import barramento from '@/barramento'
+
 export default {
     props: {idade: Number},
         // ['idade'],
     methods: {
         alterarIdade(){
-            this.idade = 33
-            this.$emit('idadeMudou',this.idade) 
+            //Altera elementos irmãos, alterando o elemento pai.
+            // this.idade = 33
+            // this.$emit('idadeMudou',this.idade) 
+
+            //Altera elementos irmãos diretamente. Sem alterar o elemento pai, 
+            // e independendo do mesmo.
+            this.idade += 1
+            barramento.alterarIdade(this.idade) 
         }
     }
 }
